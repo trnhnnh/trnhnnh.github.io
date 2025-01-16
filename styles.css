@@ -2,10 +2,10 @@
 html, body {
     height: 100%; /* Ensure full height of the viewport */
     margin: 0; /* Remove default margin */
-    font-family: 'VT323', monospace; /* Use VT323 font instead of Helvetica */
+    font-family: 'VT323', monospace; /* Apply VT323 font globally */
     background-color: black; /* Set background color to black */
-    color: white;
-    cursor: none;
+    color: white; /* Set text color to white */
+    cursor: none; /* Hide default cursor */
 }
 
 /* Background Stars GIF styling */
@@ -37,7 +37,6 @@ body {
     line-height: 1.5;
     white-space: normal;
     position: relative;
-    font-family: 'VT323', monospace; /* Apply VT323 font to header */
 }
 
 /* Image Styling */
@@ -65,5 +64,19 @@ footer.footer {
     bottom: 0;
     width: 100%; /* Full width */
     margin-top: auto; /* Push footer to bottom */
-    font-family: 'VT323', monospace; /* Apply VT323 font to footer */
+}
+
+/* Style for Back to About link */
+.back-home {
+    color: #f1c40f; /* Yellow color */
+    font-size: 0.9rem; /* Font size same as in the About page */
+    text-decoration: none;
+    position: absolute; /* Position it in the top-left corner */
+    top: 20px;
+    left: 20px;
+}
+
+/* Hover effect for Back to About link */
+.back-home:hover {
+    color: #e67e22; /* Change to a darker yellow on hover */
 }
