@@ -25,6 +25,7 @@ body {
 
 /* Header Styling */
 .header {
+    background-color: black;
     font-size: 18px;
     font-weight: 150;
     text-align: center;
@@ -46,4 +47,16 @@ body {
     height: auto;
     display: block;
     margin: 0 auto;
+}
+
+/* Footer Styling */
+footer.footer {
+    background-color: black; /* Black background for the footer */
+    color: white; /* White text color */
+    text-align: center;
+    padding: 10px 0; /* Padding around the text */
+    position: relative;
+    bottom: 0;
+    width: 100%; /* Full width */
+    margin-top: auto; /* Push footer to bottom */
 }
