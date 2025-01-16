@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About</title>
-
-        <!-- Link to your favicon -->
+    
+    <!-- Link to your favicon -->
     <link rel="icon" href="spaghetti_yum.png" type="image/x-icon"> <!-- This line links the favicon -->
     
     <link rel="stylesheet" href="styles.css">
@@ -42,9 +42,9 @@
             background-color: rgba(0, 0, 0, 0.9);
             text-align: center;
             color: white;
-            padding: 40px; /* Increased padding around the game area */
+            padding: 40px;
             z-index: 1000;
-            overflow-y: auto; /* Ensures content fits in the window */
+            overflow-y: auto;
         }
 
         .about-section h1 {
@@ -174,7 +174,7 @@
             startButton.textContent = 'Make a Decision';
             startButton.onclick = function() { makeDecision(['return', 'colonize'], handleReturnOrColonize); };
         } else if (gameState === 3) {
-            gameOutput.textContent = 'The colonization mission is in jeopardy. The infrasture on the new planet is crumbling and destroying its ecosystem. With supplies low, the billionaires on board turn to cannibalism, and they have their sights set on you. Do you return to Earth to help fix it, or continue the dangerous colonization effort? (return/colonize)';
+            gameOutput.textContent = 'The colonization mission is in jeopardy. The infrastructure on the new planet is crumbling and destroying its ecosystem. With supplies low, the billionaires on board turn to cannibalism, and they have their sights set on you. Do you return to Earth to help fix it, or continue the dangerous colonization effort? (return/colonize)';
             startButton.textContent = 'Make a Decision';
             startButton.onclick = function() { makeDecision(['return', 'colonize'], handleReturnOrColonize); };
         } else if (gameState === 4) {
@@ -196,12 +196,12 @@
 
     // General function for handling user decision
     function makeDecision(validChoices, callback) {
-        const userChoice = prompt(Please enter one of the following choices: ${validChoices.join(' / ')}).toLowerCase();
+        const userChoice = prompt(`Please enter one of the following choices: ${validChoices.join(' / ')}`).toLowerCase();
         
         if (validChoices.includes(userChoice)) {
             callback(userChoice);
         } else {
-            gameOutput.textContent = Invalid choice. Please enter one of the following: ${validChoices.join(' / ')};
+            gameOutput.textContent = `Invalid choice. Please enter one of the following: ${validChoices.join(' / ')}`;
         }
     }
 
@@ -250,7 +250,6 @@
         startButton.textContent = 'Start the Journey'; // Reset the button text
     });
 </script>
-
 
 </body>
 </html>
