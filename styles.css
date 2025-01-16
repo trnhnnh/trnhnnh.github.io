@@ -10,16 +10,19 @@ body {
 
 h1 {
     color: #2c3e50;
-    font-size: 2rem;
+    font-size: 1.8rem; /* Adjust font size as needed */
     margin-top: 50px;
+    white-space: nowrap; /* Prevent text from wrapping */
+    overflow: hidden; /* Ensure that the text doesn't overflow */
+    text-overflow: ellipsis; /* Add "..." if text is too long */
+    width: 100%; /* Ensure it takes up the full width */
 }
 
-img {
-    max-width: 80%;
-    height: auto;
-    margin-top: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+/* Adjust font size for smaller screens */
+@media (max-width: 600px) {
+    h1 {
+        font-size: 1.4rem; /* Reduce font size on small screens */
+    }
 }
 
 .container {
@@ -28,110 +31,140 @@ img {
     padding: 20px;
 }
 
-/* Cat Styles */
+/* Running Cat Styles */
 .cat {
     position: relative;
-    width: 200px;
-    height: 200px;
-    margin-top: 50px;
-    display: inline-block;
-}
-
-/* Cat's Body */
-.cat-body {
-    width: 150px;
-    height: 100px;
-    background-color: #FFCC00;
-    border-radius: 50%;
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-/* Cat's Head */
-.cat-head {
     width: 120px;
-    height: 120px;
-    background-color: #FFCC00;
-    border-radius: 50%;
-    position: absolute;
-    top: -40px;
-    left: 50%;
-    transform: translateX(-50%);
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    height: 60px;
+    margin-top: 50px;
+    animation: runAcross 3s linear infinite;
 }
 
-/* Cat's Ears */
-.cat-ear-left, .cat-ear-right {
-    width: 40px;
-    height: 40px;
+.cat-body {
+    position: relative;
+    width: 100px;
+    height: 50px;
     background-color: #FFCC00;
+    border-radius: 20px;
+    bottom: 10px;
+    left: 10px;
+}
+
+.cat-head {
     position: absolute;
     top: -20px;
+    left: 20px;
+    width: 30px;
+    height: 30px;
+    background-color: #FFCC00;
+    border-radius: 50%;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+}
+
+.cat-ear-left,
+.cat-ear-right {
+    position: absolute;
+    top: -10px;
+    width: 12px;
+    height: 12px;
+    background-color: #FFCC00;
     transform: rotate(45deg);
 }
 
 .cat-ear-left {
-    left: -30px;
+    left: -5px;
 }
 
 .cat-ear-right {
-    right: -30px;
+    right: -5px;
 }
 
-/* Cat's Eyes */
-.cat-eye-left, .cat-eye-right {
-    width: 20px;
-    height: 20px;
-    background-color: #FFFFFF;
-    border-radius: 50%;
+.cat-eye-left,
+.cat-eye-right {
     position: absolute;
-    top: 40px;
+    top: 5px;
+    width: 6px;
+    height: 6px;
+    background-color: black;
+    border-radius: 50%;
 }
 
 .cat-eye-left {
-    left: 30px;
+    left: 7px;
 }
 
 .cat-eye-right {
-    right: 30px;
+    right: 7px;
 }
 
-/* Cat's Mouth */
-.cat-mouth {
-    width: 30px;
-    height: 20px;
-    border-radius: 50%;
-    background-color: #000000;
+.cat-legs {
     position: absolute;
-    top: 70px;
-    left: 50%;
-    transform: translateX(-50%);
+    width: 8px;
+    height: 20px;
+    background-color: #333;
+    border-radius: 3px;
+    bottom: -15px;
 }
 
-/* Cat's Tail */
+.left-leg {
+    left: 15px;
+    animation: left-leg-move 0.5s infinite alternate;
+}
+
+.right-leg {
+    right: 15px;
+    animation: right-leg-move 0.5s infinite alternate;
+}
+
 .cat-tail {
-    width: 100px;
-    height: 20px;
-    background-color: #FFCC00;
-    border-radius: 10px;
     position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%) rotate(-30deg);
-    animation: tail-swing 1s ease-in-out infinite;
+    width: 40px;
+    height: 10px;
+    background-color: #FFCC00;
+    border-radius: 20px;
+    top: 10px;
+    right: -20px;
+    animation: tail-wag 1s ease-in-out infinite;
 }
 
-/* Tail Animation */
-@keyframes tail-swing {
+/* Cat Animation for Running */
+@keyframes runAcross {
     0% {
-        transform: translateX(-50%) rotate(-30deg);
-    }
-    50% {
-        transform: translateX(-50%) rotate(30deg);
+        left: -150px;
     }
     100% {
-        transform: translateX(-50%) rotate(-30deg);
+        left: 100%;
+    }
+}
+
+/* Leg movement */
+@keyframes left-leg-move {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(90deg);
+    }
+}
+
+@keyframes right-leg-move {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(-90deg);
+    }
+}
+
+/* Tail wagging animation */
+@keyframes tail-wag {
+    0% {
+        transform: rotate(10deg);
+    }
+    50% {
+        transform: rotate(-10deg);
+    }
+    100% {
+        transform: rotate(10deg);
     }
 }
