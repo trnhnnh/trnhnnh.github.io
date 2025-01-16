@@ -7,8 +7,17 @@ html, body {
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    background-color: black; /* Dark background for contrast */
+    background-color: black; /* Page background */
     color: white;
+}
+
+/* Background Stars GIF styling */
+body {
+    background-image: url('stars.gif'); /* Reference the stars.gif */
+    background-size: cover; /* Ensure the GIF covers the entire page */
+    background-position: center center; /* Center the GIF */
+    background-repeat: no-repeat; /* Don't repeat the GIF */
+    background-attachment: fixed; /* Keep the GIF fixed while scrolling */
 }
 
 /* Container for the content */
@@ -22,6 +31,7 @@ html, body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    z-index: 2; /* Ensures content is above the stars GIF */
 }
 
 /* Header Styling */
@@ -33,7 +43,8 @@ html, body {
     margin-bottom: 20px;
     line-height: 1.5;
     white-space: normal;
-    z-index: 2; /* Make sure header is above the GIF */
+    position: relative;
+    z-index: 3; /* Ensure header is above the GIF */
 }
 
 /* Image Styling */
@@ -48,16 +59,5 @@ html, body {
     display: block;
     margin: 0 auto;
     position: relative;
-    z-index: 3; /* Ensure the spaghetti image is above the GIF */
-}
-
-/* Transparent GIF Styling */
-.overlay-gif {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Ensures GIF covers the background without distortion */
-    z-index: 1; /* Ensure the GIF stays behind the content */
+    z-index: 4; /* Ensure the spaghetti image is above the GIF */
 }
