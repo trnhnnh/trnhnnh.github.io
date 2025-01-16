@@ -2,7 +2,7 @@
 html, body {
     height: 100%; /* Ensure full height of the viewport */
     margin: 0; /* Remove default margin */
-    font-family: 'Helvetica', sans-serif;
+    font-family: 'VT323', monospace; /* Use VT323 font instead of Helvetica */
     background-color: black; /* Set background color to black */
     color: white;
     cursor: none;
@@ -37,11 +37,12 @@ body {
     line-height: 1.5;
     white-space: normal;
     position: relative;
+    font-family: 'VT323', monospace; /* Apply VT323 font to header */
 }
 
 /* Image Styling */
 .image-container {
-    margin-top:30px; /* Space between text and image */
+    margin-top: 30px; /* Space between text and image */
 }
 
 .image {
@@ -55,7 +56,7 @@ body {
 /* Footer Styling */
 footer.footer {
     background-color: black; /* Black background for the footer */
-    font-size: 12px;
+    font-size: 16px;
     font-weight: 150;
     text-align: center;
     color: white; /* White text color */
@@ -64,4 +65,5 @@ footer.footer {
     bottom: 0;
     width: 100%; /* Full width */
     margin-top: auto; /* Push footer to bottom */
+    font-family: 'VT323', monospace; /* Apply VT323 font to footer */
 }
