@@ -10,7 +10,6 @@ html, body {
 /* Background Stars GIF styling */
 body {
     background-image: url('stars.gif'); /* Reference stars.gif in the same folder */
-    background-size: auto; /* Keep the original size of the GIF */
     background-position: top left; /* Position the GIF at the top-left corner */
     background-repeat: repeat; /* Make the GIF repeat both horizontally and vertically */
     background-attachment: fixed; /* Keep the GIF fixed while scrolling */
@@ -21,7 +20,7 @@ body {
     text-align: center;
     width: 100%; /* Full width */
     height: auto; /* Remove full-height constraint */
-    padding: 20px; /* Add some padding */
+    padding: 5px; /* Add some padding */
 }
 
 /* Header Styling */
@@ -38,7 +37,7 @@ body {
 
 /* Image Styling */
 .image-container {
-    margin-top: 20px; /* Space between text and image */
+    margin-top:20px; /* Space between text and image */
 }
 
 .image {
