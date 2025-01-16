@@ -6,10 +6,10 @@
     <title>About</title>
     
     <!-- Link to your favicon -->
-    <link rel="icon" href="spaghetti_yum.png" type="image/x-icon"> <!-- This line links the favicon -->
+    <link rel="icon" href="spaghetti_yum.png" type="image/x-icon">
     
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet"> <!-- VT323 font link -->
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
     <style>
         /* General Styles */
         body {
@@ -33,7 +33,7 @@
 
         /* About Section - Hidden by default */
         .about-section {
-            display: none; /* Hide by default */
+            display: none;
             position: fixed;
             top: 0;
             left: 0;
@@ -79,6 +79,7 @@
             position: relative;
             bottom: 0;
             width: 100%;
+            font-size: 0.9rem; /* Smaller font size */
         }
 
         #gameOutput {
@@ -109,6 +110,27 @@
             position: absolute;
             top: 20px;
             left: 20px;
+        }
+
+        /* Bio Section */
+        .bio-section {
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px; /* Move it closer to the top of the page */
+            background-color: #222;
+            color: #f1c40f;
+            font-size: 0.9rem; /* Smaller font size for bio */
+        }
+
+        .bio-section h2 {
+            font-size: 1.5rem; /* Slightly smaller heading */
+            margin-bottom: 10px;
+        }
+
+        .bio-section p {
+            font-size: 0.9rem;
+            line-height: 1.5;
+            text-transform: lowercase; /* Make all text lowercase */
         }
     </style>
 </head>
@@ -142,6 +164,14 @@
         <button class="close-btn" id="closeAboutBtn">Close</button>
     </div>
 
+    <!-- Bio Section -->
+    <div class="bio-section">
+        <h2>about</h2>
+        <p>hannah tran is a designer for performance and media with a passion for new works and movement, based in brooklyn.</p>
+        <p>she holds a masters of fine arts in design from the yale school of drama.</p>
+        <p>proud member of local usa 829.</p>
+    </div>
+
     <!-- Footer Section -->
     <footer class="footer">
         <p>Contact: trnhnnh@gmail.com</p>
@@ -168,7 +198,7 @@
             gameState = 1;
             gameOutput.textContent = 'You are on your spaceship, headed to a new planet. Your mission: colonize and make Earth’s problems a thing of the past. Do you want to proceed with colonizing or reconsider? (reconsider/colonize)';
             startButton.textContent = 'Make a Decision';
-            startButton.onclick = function() { makeDecision(['colonize', 'reconsider'], handleColonizationDecision); };
+            startButton.onclick = function() { makeDecision(['reconsider', 'colonize'], handleColonizationDecision); };
         } else if (gameState === 2) {
             gameOutput.textContent = 'The colonization mission is failing. The planet is not suited for human life. Meanwhile, back on Earth, pollution and climate change worsen. Do you try to return to Earth to fix things, or continue colonizing? (return/colonize)';
             startButton.textContent = 'Make a Decision';
