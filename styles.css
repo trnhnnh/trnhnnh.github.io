@@ -55,8 +55,10 @@ body {
 /* Footer Styling */
 footer.footer {
     background-color: black; /* Black background for the footer */
-    color: white; /* White text color */
+    font-size: 12px;
+    font-weight: 150;
     text-align: center;
+    color: white; /* White text color */
     padding: 10px 0; /* Padding around the text */
     position: relative;
     bottom: 0;
