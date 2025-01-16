@@ -10,10 +10,10 @@ html, body {
 /* Background Stars GIF styling */
 body {
     background-image: url('stars_loop.gif'); /* Reference stars.gif in the same folder */
-    background-size: 25% 25%;
+    background-size: 37% 50%;
     background-position: top left; /* Position the GIF at the top-left corner */
     background-repeat: repeat; /* Make the GIF repeat both horizontally and vertically */
-    background-attachment: fixed; /* Keep the GIF fixed while scrolling */
+    /* background-attachment: fixed; /* Keep the GIF fixed while scrolling */
 }
 
 /* Container to hold all content */
