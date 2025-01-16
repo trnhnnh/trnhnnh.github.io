@@ -144,7 +144,7 @@
     </footer>
 
     <!-- JavaScript for Interactive Experience -->
-    <script>
+<script>
     // Game Logic
     let gameState = 0;
     const gameOutput = document.getElementById('gameOutput');
@@ -162,7 +162,7 @@
     function startGame() {
         if (gameState === 0) {
             gameState = 1;
-            gameOutput.textContent = 'You are on your spaceship, headed to a new planet. Your mission: colonize and make Earth’s problems a thing of the past. Do you want to proceed with colonizing or reconsider? (colonize/reconsider)';
+            gameOutput.textContent = 'You are on your spaceship, headed to a new planet. Your mission: colonize and make Earth’s problems a thing of the past. Do you want to proceed with colonizing or reconsider? (reconsider/reconsider)';
             startButton.textContent = 'Make a Decision';
             startButton.onclick = function() { makeDecision(['colonize', 'reconsider'], handleColonizationDecision); };
         } else if (gameState === 2) {
@@ -170,11 +170,18 @@
             startButton.textContent = 'Make a Decision';
             startButton.onclick = function() { makeDecision(['return', 'colonize'], handleReturnOrColonize); };
         } else if (gameState === 3) {
-            gameOutput.textContent = 'The colonization mission is in jeopardy. Do you return to Earth to help fix it, or continue the dangerous colonization effort? (return/colonize)';
+            gameOutput.textContent = 'The colonization mission is in jeopardy. The infrasture on the new planet is crumbling and destroying its ecosystem. With supplies low, the billionaires on board turn to cannibalism, and they have their sights set on you. Do you return to Earth to help fix it, or continue the dangerous colonization effort? (return/colonize)';
             startButton.textContent = 'Make a Decision';
             startButton.onclick = function() { makeDecision(['return', 'colonize'], handleReturnOrColonize); };
-        } else if (gameState === 10 || gameState === 4) {
-            gameOutput.textContent = 'Congratulations! You’ve made it through a small part of the journey. Would you like to start over?';
+        } else if (gameState === 4) {
+            gameOutput.textContent = 'Colonization fails, and the mission ends in disaster. The resources are gone, and the Earth is beyond saving. Would you like to start over?';
+            startButton.textContent = 'Start Again';
+            startButton.onclick = function() {
+                gameState = 0; // Reset the game state
+                startGame(); // Restart the game
+            };
+        } else if (gameState === 10) {
+            gameOutput.textContent = "You've decided to prioritize Earth's survival. By prioritizing sustainability over profit, humanity united to dismantle corporate greed and restore Earth's ecosystems. With clean energy, thriving forests, and a renewed global spirit, the planet was made habitable again. It's not perfect, but there is hope for the future. Would you like to start over?";
             startButton.textContent = 'Start Again';
             startButton.onclick = function() {
                 gameState = 0; // Reset the game state
@@ -198,24 +205,37 @@
     function handleColonizationDecision(userChoice) {
         if (userChoice === 'colonize') {
             gameOutput.textContent = 'You proceed with colonizing the planet. But the new ecosystem begins to fail, and Earth’s resources continue to dwindle.';
-            gameState = 2;
+            gameState = 2; // Automatically transition to the next game state (2: Mission Failing)
         } else if (userChoice === 'reconsider') {
             gameOutput.textContent = 'You decide to reconsider. You look back at Earth, realizing it needs more focus before we abandon it for the unknown.';
-            gameState = 10; // A different branch where Earth focus is prioritized
+            gameState = 10; // Transition to the end game state where Earth is prioritized
         }
+
         startButton.textContent = 'Continue';
+        startButton.onclick = function() {
+            startGame(); // Move to the next state
+        };
     }
 
-    // Handles decision to return or continue colonizing
+    // Handles decision to return or continue colonizing at gameState 2 or 3
     function handleReturnOrColonize(userChoice) {
         if (userChoice === 'return') {
             gameOutput.textContent = 'You decide to return to Earth, realizing that fixing Earth is the key to the future. The mission ends, but hope is restored.';
-            gameState = 10;
+            gameState = 10; // Transition to the end game state (return to Earth)
         } else if (userChoice === 'colonize') {
-            gameOutput.textContent = 'You press on with colonization, but your supplies are running low.';
-            gameState = 3;
+            if (gameState === 2) {
+                gameOutput.textContent = 'You press on with colonization, but your supplies are running low. The mission faces certain failure.';
+                gameState = 3; // Stay in the jeopardy state (3) for decision.
+            } else if (gameState === 3) {
+                gameOutput.textContent = 'You continue the colonization effort, but the situation worsens, and failure is imminent.';
+                gameState = 4; // Transition to the "disaster" state where the mission fails completely.
+            }
         }
+
         startButton.textContent = 'Continue';
+        startButton.onclick = function() {
+            startGame(); // Move to the next state (or start again)
+        };
     }
 
     // Close the About section and reset game state when the Close button is clicked
@@ -226,6 +246,7 @@
         startButton.textContent = 'Start the Journey'; // Reset the button text
     });
 </script>
+
 
 </body>
 </html>
