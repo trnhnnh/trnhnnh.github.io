@@ -20,7 +20,7 @@ body {
     text-align: center;
     width: 100%; /* Full width */
     height: auto; /* Remove full-height constraint */
-    padding: 10px; /* Add some padding */
+    padding: 15px; /* Add some padding */
 }
 
 /* Header Styling */
@@ -38,7 +38,7 @@ body {
 
 /* Image Styling */
 .image-container {
-    margin-top:20px; /* Space between text and image */
+    margin-top:30px; /* Space between text and image */
 }
 
 .image {
