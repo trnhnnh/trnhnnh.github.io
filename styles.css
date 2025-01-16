@@ -2,28 +2,20 @@
 html, body {
     height: 100%; /* Ensure full height of the viewport */
     margin: 0; /* Remove default margin */
-    font-family: 'VT323', monospace; /* Use VT323 font */
+    font-family: 'VT323', monospace; /* Use VT323 font instead of Helvetica */
     background-color: black; /* Set background color to black */
     color: white;
     cursor: none;
 }
 
-/* Styles specific to the homepage */
-body.home {
-    /* Homepage specific styles */
-    background-color: #000; /* Reset background color to black */
-    background-image: none; /* Remove the stars background */
-    cursor: default; /* Default cursor on homepage */
-}
-
-/* Styles specific to the game page */
-body.game-page {
-    background-image: url('stars_loop.gif'); /* Stars GIF for the game page */
+/* Background Stars GIF styling */
+body {
+    background-image: url('stars_loop.gif'); /* Reference stars.gif in the same folder */
     background-size: 37% 50%;
     background-position: top left; /* Position the GIF at the top-left corner */
     background-repeat: repeat; /* Make the GIF repeat both horizontally and vertically */
     background-attachment: fixed; /* Keep the GIF fixed while scrolling */
-    cursor: url('shootingstar.png') 13 111, auto; /* Custom PNG cursor for game page */
+    cursor: url('shootingstar.png') 13 111, auto; /* Add custom PNG cursor */
 }
 
 /* Container to hold all content */
@@ -31,16 +23,13 @@ body.game-page {
     text-align: center;
     width: 100%; /* Full width */
     height: auto; /* Remove full-height constraint */
-    padding: 40px; /* More padding around the game area */
-    max-width: 900px; /* Limit the width on large screens */
-    box-sizing: border-box; /* Ensure padding is included in the width */
-    margin: 0 auto; /* Center the container */
+    padding: 15px; /* Add some padding */
 }
 
 /* Header Styling */
 .header {
     background-color: black;
-    font-size: 2.5rem; /* Larger font size for the header */
+    font-size: 18px;
     font-weight: 150;
     text-align: center;
     color: white;
@@ -51,24 +40,17 @@ body.game-page {
     font-family: 'VT323', monospace; /* Apply VT323 font to header */
 }
 
-/* About Section - Hidden by default */
-.about-section {
-    display: none; /* Hide by default */
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.9); /* Dark background */
-    text-align: center;
-    color: white;
-    padding: 40px; /* More padding around the game area */
-    z-index: 1000;
-    overflow-y: auto; /* Prevents content from overflowing vertically */
-    box-sizing: border-box; /* Include padding in the element’s total width and height */
-    max-width: 1000px; /* Limit max width */
-    max-height: 90%; /* Limit max height to avoid overflow */
-    margin: auto; /* Center the section */
+/* Image Styling */
+.image-container {
+    margin-top: 30px; /* Space between text and image */
+}
+
+.image {
+    width: 80%; /* Adjust image width to fit your needs */
+    max-width: 400px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
 }
 
 /* Footer Styling */
@@ -84,30 +66,4 @@ footer.footer {
     width: 100%; /* Full width */
     margin-top: auto; /* Push footer to bottom */
     font-family: 'VT323', monospace; /* Apply VT323 font to footer */
-}
-
-/* Add responsiveness */
-@media screen and (max-width: 600px) {
-    .container {
-        padding: 20px; /* Less padding on small screens */
-    }
-
-    .about-section {
-        padding: 20px; /* Less padding for the about section on smaller screens */
-        max-width: 100%; /* Allow it to use the full screen width */
-        max-height: 85%; /* Adjust for smaller screens */
-    }
-
-    .header {
-        font-size: 2rem; /* Slightly smaller header */
-    }
-
-    #gameOutput {
-        font-size: 1rem; /* Smaller font size for output */
-    }
-
-    #startButton {
-        font-size: 0.9rem; /* Smaller start button text */
-        padding: 8px 16px; /* Adjust padding for smaller screens */
-    }
 }
