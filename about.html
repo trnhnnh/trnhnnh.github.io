@@ -166,7 +166,7 @@
     function startGame() {
         if (gameState === 0) {
             gameState = 1;
-            gameOutput.textContent = 'You are on your spaceship, headed to a new planet. Your mission: colonize and make Earth’s problems a thing of the past. Do you want to proceed with colonizing or reconsider? (reconsider/reconsider)';
+            gameOutput.textContent = 'You are on your spaceship, headed to a new planet. Your mission: colonize and make Earth’s problems a thing of the past. Do you want to proceed with colonizing or reconsider? (reconsider/colonize)';
             startButton.textContent = 'Make a Decision';
             startButton.onclick = function() { makeDecision(['colonize', 'reconsider'], handleColonizationDecision); };
         } else if (gameState === 2) {
