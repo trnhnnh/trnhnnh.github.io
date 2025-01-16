@@ -169,9 +169,11 @@
                     if (userChoice === 'colonize') {
                         gameOutput.textContent = 'You proceed with colonizing the planet. But the new ecosystem begins to fail, and Earth’s resources continue to dwindle.';
                         gameState = 2;
-                    } else {
+                    } else if (userChoice === 'reconsider') {
                         gameOutput.textContent = 'You decide to reconsider. You look back at Earth, realizing it needs more focus before we abandon it for the unknown.';
                         gameState = 10; // A different branch where Earth focus is prioritized
+                    } else {
+                        gameOutput.textContent = 'Please enter "colonize" or "reconsider" to proceed.';
                     }
                     startButton.textContent = 'Continue';
                 };
@@ -183,23 +185,27 @@
                     if (userChoice === 'return') {
                         gameOutput.textContent = 'You decide to return to Earth, realizing that fixing Earth is the key to the future. The mission ends, but hope is restored.';
                         gameState = 10;
-                    } else {
+                    } else if (userChoice === 'colonize') {
                         gameOutput.textContent = 'You press on with colonization, but your supplies are running low.';
                         gameState = 3;
+                    } else {
+                        gameOutput.textContent = 'Please enter "return" or "colonize" to proceed.';
                     }
                     startButton.textContent = 'Continue';
                 };
             } else if (gameState === 3) {
-                gameOutput.textContent = 'The colonization mission is in jeopardy. Because of the lack of supplies, all of the billionaires on board the spaceship have decided to cannibalize everyone on board, including you. Meanwhile, the new planet\'s atmosphere is unbreathable, the new ecosystem is collapsing, and the resources you expected to sustain the colony are non-existent. Meanwhile, Earth’s environment continues to deteriorate—rising sea levels, rampant wildfires, and increasing temperatures. You face an agonizing decision: Do you return to Earth to help fix it, or do you continue the dangerous colonization effort, hoping things might improve? (return/colonize)';
+                gameOutput.textContent = 'The colonization mission is in jeopardy. Do you return to Earth to help fix it, or continue colonizing? (return/colonize)';
                 startButton.textContent = 'Make a Decision';
                 startButton.onclick = function() {
                     const userChoice = prompt('Do you return to Earth to help fix its issues, or continue colonizing? (return/colonize)').toLowerCase();
                     if (userChoice === 'return') {
-                        gameOutput.textContent = 'After much sacrifice and innovation, humanity works together to halt the damage. Renewable energy becomes the standard. Pollution levels decrease. Global temperatures stabilize. This doesn\'t solve all the problems, but it’s a start. Earth begins to heal slowly.';
+                        gameOutput.textContent = 'After much sacrifice and innovation, humanity works together to halt the damage. Earth begins to heal slowly.';
                         gameState = 10;
-                    } else {
-                        gameOutput.textContent = 'Despite your best efforts, you weren't able to colonize space. Political interests and corporate greed make reversing the damage nearly impossible. Both the Earth and this new planet continue to degrade, and the last remnants of human civilization face collapse.';
+                    } else if (userChoice === 'colonize') {
+                        gameOutput.textContent = 'Both the Earth and this new planet continue to degrade.';
                         gameState = 4;
+                    } else {
+                        gameOutput.textContent = 'Please enter "return" or "colonize" to proceed.';
                     }
                     startButton.textContent = 'Continue';
                 };
