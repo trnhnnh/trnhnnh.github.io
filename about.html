@@ -3,8 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>about</title>
+    <title>About</title>
     <link rel="stylesheet" href="styles.css"> <!-- Link to your styles -->
+    <style>
+        /* Styling the About Section */
+        .about-section {
+            display: none;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            padding: 20px;
+            font-family: 'Courier New', monospace;
+        }
+
+        .about-section h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .about-section p {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+
+        .button {
+            background-color: #f1c40f;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            color: #2c3e50;
+            cursor: pointer;
+            border-radius: 5px;
+            border: none;
+            transition: background-color 0.3s;
+        }
+
+        .button:hover {
+            background-color: #e67e22;
+        }
+
+        .game-output {
+            font-size: 1.1rem;
+            margin-top: 15px;
+            font-family: 'Courier New', monospace;
+            color: #ecf0f1;
+        }
+
+        .close-about {
+            background-color: #fff;
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 1rem;
+            border-radius: 5px;
+        }
+
+        .close-about:hover {
+            background-color: #ccc;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -13,9 +78,78 @@
         <a href="index.html">Back to Home</a>
     </div>
 
+    <!-- About Section with the Game -->
+    <div class="about-section" id="aboutSection">
+        <div>
+            <h1>Space!</h1>
+            <p>As humanity prepares to leave Earth and attempts to conquer the vast galaxy, you find yourself aboard a spaceship headed toward a new world. But is this the right choice?</p>
+            <div class="game-output" id="gameOutput"></div>
+
+            <!-- Choices -->
+            <button class="button" id="startButton">Start Journey</button>
+            <button class="close-about" id="closeAboutButton">Close</button>
+        </div>
+    </div>
+
     <!-- Footer Section -->
     <footer class="footer">
         <p>contact: trnhnnh@gmail.com</p>
     </footer>
+
+    <script>
+        // Get references to elements
+        const startButton = document.getElementById('startButton');
+        const closeAboutButton = document.getElementById('closeAboutButton');
+        const aboutSection = document.getElementById('aboutSection');
+        const gameOutput = document.getElementById('gameOutput');
+
+        let gameState = 0;
+
+        // Show the About section with the game when clicked
+        document.querySelector('a[href="index.html"]').addEventListener('click', function() {
+            aboutSection.style.display = 'flex';
+            gameState = 0;
+            gameOutput.textContent = 'You are about to begin a journey to colonize a distant planet. What will you do?';
+        });
+
+        // Close the About section
+        closeAboutButton.addEventListener('click', function() {
+            aboutSection.style.display = 'none';
+        });
+
+        // Start the game
+        startButton.addEventListener('click', function() {
+            if (gameState === 0) {
+                gameState = 1;
+                gameOutput.textContent = 'You are on your spaceship, headed to a new planet. Your mission: colonize and make Earth’s problems a thing of the past. Do you want to proceed with colonizing or reconsider? (colonize/reconsider)';
+                startButton.textContent = 'Make a Decision';
+            } else if (gameState === 1) {
+                const userChoice = prompt('Do you want to colonize the new planet or reconsider? (colonize/reconsider)').toLowerCase();
+                if (userChoice === 'colonize') {
+                    gameOutput.textContent = 'You proceed with colonizing the planet. But the new ecosystem begins to fail, and Earth’s resources continue to dwindle.';
+                } else {
+                    gameOutput.textContent = 'You decide to reconsider. You look back at Earth, realizing it needs more focus before we abandon it for the unknown.';
+                }
+                gameState = 2;
+                startButton.textContent = 'Continue';
+            } else if (gameState === 2) {
+                gameOutput.textContent = 'The colonization mission is failing. The planet is not suited for human life. Meanwhile, back on Earth, pollution and climate change worsen. Do you try to return to Earth to fix things, or continue colonizing? (return/colonize)';
+                startButton.textContent = 'Make a Decision';
+            } else if (gameState === 3) {
+                const userChoice = prompt('Do you return to Earth to help fix its issues, or continue colonizing? (return/colonize)').toLowerCase();
+                if (userChoice === 'return') {
+                    gameOutput.textContent = 'You decide to return to Earth, realizing that fixing Earth is the key to the future. The mission ends, but hope is restored.';
+                } else {
+                    gameOutput.textContent = 'You press on with colonization, but your supplies are running low, and you realize you have neglected the problems on Earth.';
+                }
+                gameState = 4;
+                startButton.textContent = 'End Journey';
+            } else if (gameState === 4) {
+                gameOutput.textContent = 'Congratulations! You’ve made it through a small part of the journey. Do you want to start again and focus on Earth, or keep pushing for colonization?';
+                startButton.textContent = 'Start Again';
+                gameState = 0;
+            }
+        });
+    </script>
 </body>
 </html>
