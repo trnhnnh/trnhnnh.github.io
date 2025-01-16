@@ -20,8 +20,8 @@ html, body {
 
 /* Header Styling */
 .header {
-    font-size: 36px;
-    font-weight: 200;
+    font-size: 24px;
+    font-weight: 300;
     text-align: center;
     color: white; /* Text color set to white */
     margin-bottom: 20px; /* Space below the header */
