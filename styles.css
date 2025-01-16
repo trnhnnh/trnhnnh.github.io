@@ -69,7 +69,7 @@ footer.footer {
 /* Style for Back to About link */
 .back-home {
     color: #f1c40f; /* Yellow color */
-    font-size: 1.0rem; /* Font size same as in the About page */
+    font-size: 1.3rem; /* Font size same as in the About page */
     text-decoration: none;
     position: absolute; /* Position it in the top-left corner */
     top: 20px;
