@@ -2,20 +2,28 @@
 html, body {
     height: 100%; /* Ensure full height of the viewport */
     margin: 0; /* Remove default margin */
-    font-family: 'VT323', monospace; /* Use VT323 font instead of Helvetica */
+    font-family: 'VT323', monospace; /* Use VT323 font */
     background-color: black; /* Set background color to black */
     color: white;
     cursor: none;
 }
 
-/* Background Stars GIF styling */
-body {
-    background-image: url('stars_loop.gif'); /* Reference stars.gif in the same folder */
+/* Styles specific to the homepage */
+body.home {
+    /* Homepage specific styles */
+    background-color: #000; /* Reset background color to black */
+    background-image: none; /* Remove the stars background */
+    cursor: default; /* Default cursor on homepage */
+}
+
+/* Styles specific to the game page */
+body.game-page {
+    background-image: url('stars_loop.gif'); /* Stars GIF for the game page */
     background-size: 37% 50%;
     background-position: top left; /* Position the GIF at the top-left corner */
     background-repeat: repeat; /* Make the GIF repeat both horizontally and vertically */
     background-attachment: fixed; /* Keep the GIF fixed while scrolling */
-    cursor: url('shootingstar.png') 13 111, auto; /* Add custom PNG cursor */
+    cursor: url('shootingstar.png') 13 111, auto; /* Custom PNG cursor for game page */
 }
 
 /* Container to hold all content */
@@ -61,65 +69,6 @@ body {
     max-width: 1000px; /* Limit max width */
     max-height: 90%; /* Limit max height to avoid overflow */
     margin: auto; /* Center the section */
-}
-
-/* About Section Header */
-.about-section h1 {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-}
-
-/* About Section Paragraph */
-.about-section p {
-    font-size: 1.2rem;
-    margin-bottom: 20px;
-}
-
-/* Close Button Styling */
-.close-btn {
-    background-color: #f1c40f;
-    padding: 10px 20px;
-    color: #2c3e50;
-    border: none;
-    cursor: pointer;
-    font-size: 1rem;
-    border-radius: 5px;
-}
-
-.close-btn:hover {
-    background-color: #e67e22;
-}
-
-/* Game Output */
-#gameOutput {
-    font-size: 1.2rem;
-    margin-bottom: 20px;
-    color: #f1c40f;
-}
-
-/* Start Button Styling */
-#startButton {
-    background-color: #f1c40f;
-    padding: 10px 20px;
-    color: #2c3e50;
-    border: none;
-    cursor: pointer;
-    font-size: 1rem;
-    border-radius: 5px;
-}
-
-#startButton:hover {
-    background-color: #e67e22;
-}
-
-/* Back to Home Link */
-.back-home {
-    color: #f1c40f;
-    font-size: 1.2rem;
-    text-decoration: none;
-    position: absolute;
-    top: 20px;
-    left: 20px;
 }
 
 /* Footer Styling */
