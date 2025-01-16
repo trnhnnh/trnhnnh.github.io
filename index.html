@@ -10,6 +10,23 @@
 
     <!-- Link to your styles.css -->
     <link rel="stylesheet" href="styles.css">
+
+    <style>
+        /* Style for Back to About link */
+        .back-home {
+            color: #f1c40f; /* Yellow color */
+            font-size: 1.2rem; /* Font size same as in the About page */
+            text-decoration: none;
+            position: absolute; /* Position it in the top-left corner */
+            top: 20px;
+            left: 20px;
+        }
+
+        /* Hover effect for Back to About link */
+        .back-home:hover {
+            color: #e67e22; /* Change to a darker yellow on hover */
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -17,11 +34,11 @@
         <div class="image-container">
             <img src="spaghetti.png" alt="spaghetti" class="image">
         </div>
+    </div>
 
-        <!-- Link to About Page -->
-        <div>
-            <a href="about.html" class="back-home">Go to About Page</a>
-        </div>
+    <!-- Back to About Page Link -->
+    <div>
+        <a href="about.html" class="back-home">Go to About Page</a>
     </div>
 
     <!-- Footer Section -->
