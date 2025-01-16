@@ -20,14 +20,13 @@ html, body {
 
 /* Header Styling */
 .header {
-    font-size: 24px;
-    font-weight: 300;
+    font-size: 18px;
+    font-weight: 150;
     text-align: center;
     color: white; /* Text color set to white */
     margin-bottom: 20px; /* Space below the header */
     line-height: 1.5;
     white-space: normal;
-    text-transform: lowercase; /* Capitalize text */
     z-index: 1; /* Ensure header text stays above other content */
     position: relative; /* Keep the header positioned normally */
 }
