@@ -37,8 +37,8 @@ html, body {
 }
 
 .image {
-    width: 65%; /* Adjust image width to fit your needs */
-    max-width: 600px;
+    width: 80%; /* Adjust image width to fit your needs */
+    max-width: 400px;
     height: auto;
     display: block; /* Make sure image is block-level */
     margin: 0 auto; /* Center the image horizontally */
