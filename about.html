@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About</title>
 
-    <!-- Link to your favicon -->
+        <!-- Link to your favicon -->
     <link rel="icon" href="spaghetti_yum.png" type="image/x-icon"> <!-- This line links the favicon -->
     
     <link rel="stylesheet" href="styles.css">
@@ -174,7 +174,7 @@
             startButton.textContent = 'Make a Decision';
             startButton.onclick = function() { makeDecision(['return', 'colonize'], handleReturnOrColonize); };
         } else if (gameState === 3) {
-            gameOutput.textContent = 'The colonization mission is in jeopardy. The infrastructure on the new planet is crumbling and destroying its ecosystem. With supplies low, the billionaires on board turn to cannibalism, and they have their sights set on you. Do you return to Earth to help fix it, or continue the dangerous colonization effort? (return/colonize)';
+            gameOutput.textContent = 'The colonization mission is in jeopardy. The infrasture on the new planet is crumbling and destroying its ecosystem. With supplies low, the billionaires on board turn to cannibalism, and they have their sights set on you. Do you return to Earth to help fix it, or continue the dangerous colonization effort? (return/colonize)';
             startButton.textContent = 'Make a Decision';
             startButton.onclick = function() { makeDecision(['return', 'colonize'], handleReturnOrColonize); };
         } else if (gameState === 4) {
@@ -196,12 +196,12 @@
 
     // General function for handling user decision
     function makeDecision(validChoices, callback) {
-        const userChoice = prompt(`Please enter one of the following choices: ${validChoices.join(' / ')}`).toLowerCase();
+        const userChoice = prompt(Please enter one of the following choices: ${validChoices.join(' / ')}).toLowerCase();
         
         if (validChoices.includes(userChoice)) {
             callback(userChoice);
         } else {
-            gameOutput.textContent = `Invalid choice. Please enter one of the following: ${validChoices.join(' / ')}`;
+            gameOutput.textContent = Invalid choice. Please enter one of the following: ${validChoices.join(' / ')};
         }
     }
 
@@ -222,4 +222,35 @@
     }
 
     // Handles decision to return or continue colonizing at gameState 2 or 3
-    function
+    function handleReturnOrColonize(userChoice) {
+        if (userChoice === 'return') {
+            gameOutput.textContent = 'You decide to return to Earth, realizing that fixing Earth is the key to the future. The mission ends, but hope is restored.';
+            gameState = 10; // Transition to the end game state (return to Earth)
+        } else if (userChoice === 'colonize') {
+            if (gameState === 2) {
+                gameOutput.textContent = 'You press on with colonization, but your supplies are running low. The mission faces certain failure.';
+                gameState = 3; // Stay in the jeopardy state (3) for decision.
+            } else if (gameState === 3) {
+                gameOutput.textContent = 'You continue the colonization effort, but the situation worsens, and failure is imminent.';
+                gameState = 4; // Transition to the "disaster" state where the mission fails completely.
+            }
+        }
+
+        startButton.textContent = 'Continue';
+        startButton.onclick = function() {
+            startGame(); // Move to the next state (or start again)
+        };
+    }
+
+    // Close the About section and reset game state when the Close button is clicked
+    closeAboutBtn.addEventListener('click', function() {
+        aboutSection.style.display = 'none'; // Hide the about section
+        gameState = 0; // Reset the game state
+        gameOutput.textContent = ''; // Clear the game output
+        startButton.textContent = 'Start the Journey'; // Reset the button text
+    });
+</script>
+
+
+</body>
+</html>
