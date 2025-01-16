@@ -1,0 +1,137 @@
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
+    color: #333;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    color: #2c3e50;
+    font-size: 2rem;
+    margin-top: 50px;
+}
+
+img {
+    max-width: 80%;
+    height: auto;
+    margin-top: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Cat Styles */
+.cat {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    margin-top: 50px;
+    display: inline-block;
+}
+
+/* Cat's Body */
+.cat-body {
+    width: 150px;
+    height: 100px;
+    background-color: #FFCC00;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Cat's Head */
+.cat-head {
+    width: 120px;
+    height: 120px;
+    background-color: #FFCC00;
+    border-radius: 50%;
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Cat's Ears */
+.cat-ear-left, .cat-ear-right {
+    width: 40px;
+    height: 40px;
+    background-color: #FFCC00;
+    position: absolute;
+    top: -20px;
+    transform: rotate(45deg);
+}
+
+.cat-ear-left {
+    left: -30px;
+}
+
+.cat-ear-right {
+    right: -30px;
+}
+
+/* Cat's Eyes */
+.cat-eye-left, .cat-eye-right {
+    width: 20px;
+    height: 20px;
+    background-color: #FFFFFF;
+    border-radius: 50%;
+    position: absolute;
+    top: 40px;
+}
+
+.cat-eye-left {
+    left: 30px;
+}
+
+.cat-eye-right {
+    right: 30px;
+}
+
+/* Cat's Mouth */
+.cat-mouth {
+    width: 30px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #000000;
+    position: absolute;
+    top: 70px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Cat's Tail */
+.cat-tail {
+    width: 100px;
+    height: 20px;
+    background-color: #FFCC00;
+    border-radius: 10px;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%) rotate(-30deg);
+    animation: tail-swing 1s ease-in-out infinite;
+}
+
+/* Tail Animation */
+@keyframes tail-swing {
+    0% {
+        transform: translateX(-50%) rotate(-30deg);
+    }
+    50% {
+        transform: translateX(-50%) rotate(30deg);
+    }
+    100% {
+        transform: translateX(-50%) rotate(-30deg);
+    }
+}
