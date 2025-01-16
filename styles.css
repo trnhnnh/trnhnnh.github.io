@@ -6,7 +6,7 @@ html, body {
     background-color: black; /* Set background color to black */
     color: white;
     /* cursor: url('shootngstar.png') 36 268, auto; /* Add custom PNG cursor */
-    cursor: url('shootngstar.png') 0 0, auto; /* Add custom PNG cursor */
+    cursor: url('shootingstar.png'), auto; /* Add custom PNG cursor */
 }
 
 /* Background Stars GIF styling */
