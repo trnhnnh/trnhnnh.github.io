@@ -175,7 +175,6 @@
                     } else {
                         gameOutput.textContent = 'Please enter "colonize" or "reconsider" to proceed.';
                     }
-                    startButton.textContent = 'Continue';
                 };
             } else if (gameState === 2) {
                 gameOutput.textContent = 'The colonization mission is failing. The planet is not suited for human life. Meanwhile, back on Earth, pollution and climate change worsen. Do you try to return to Earth to fix things, or continue colonizing? (return/colonize)';
@@ -191,7 +190,6 @@
                     } else {
                         gameOutput.textContent = 'Please enter "return" or "colonize" to proceed.';
                     }
-                    startButton.textContent = 'Continue';
                 };
             } else if (gameState === 3) {
                 gameOutput.textContent = 'The colonization mission is in jeopardy. Do you return to Earth to help fix it, or continue colonizing? (return/colonize)';
@@ -207,7 +205,6 @@
                     } else {
                         gameOutput.textContent = 'Please enter "return" or "colonize" to proceed.';
                     }
-                    startButton.textContent = 'Continue';
                 };
             } else if (gameState === 10 || gameState === 4) {
                 gameOutput.textContent = 'Congratulations! You’ve made it through a small part of the journey. Do you want to start again and focus on Earth, or keep pushing for colonization?';
