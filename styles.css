@@ -20,7 +20,7 @@ body {
     text-align: center;
     width: 100%; /* Full width */
     height: auto; /* Remove full-height constraint */
-    padding: 5px; /* Add some padding */
+    padding: 10px; /* Add some padding */
 }
 
 /* Header Styling */
