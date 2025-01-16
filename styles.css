@@ -6,8 +6,30 @@ html, body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start; /* Make sure content starts at the top */
     background-color: #333; /* Dark background for contrast */
+    color: white; /* Set default text color to white */
+}
+
+/* Container for the content */
+.container {
+    text-align: center;
+    position: relative;
+    padding: 20px; /* Added padding to prevent content from touching the edges */
+}
+
+/* Header Styling */
+.header {
+    font-size: 36px;
+    font-weight: 400;
+    text-align: center;
+    color: white; /* Text color set to white */
+    margin-bottom: 20px; /* Space below the header */
+    line-height: 1.5;
+    white-space: normal;
+    text-transform: uppercase; /* Capitalize text */
+    z-index: 1; /* Ensure header text stays above other content */
+    position: relative; /* Keep the header positioned normally */
 }
 
 /* Image Styling */
@@ -19,25 +41,6 @@ html, body {
     width: 80%; /* Adjust image width to fit your needs */
     max-width: 600px;
     height: auto;
-}
-
-/* Header Styling */
-.header {
-    font-size: 36px;
-    font-weight: 700;
-    text-align: center;
-    color: white; /* Text color set to white */
-    margin-bottom: 20px;
-    line-height: 1.5;
-    white-space: normal;
-    text-transform: uppercase; /* Capitalize text */
-    z-index: 1; /* Ensure header text stays above other content */
-}
-
-/* Container for the content */
-.container {
-    text-align: center;
-    position: relative;
-    z-index: 0; /* Make sure container stays behind header */
-    padding: 20px; /* Added padding for spacing */
+    display: block; /* Make sure image is block-level */
+    margin: 0 auto; /* Center the image horizontally */
 }
