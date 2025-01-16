@@ -39,7 +39,6 @@
             text-align: center;
             color: white;
             padding: 20px;
-            font-family: 'Courier New', monospace;
             z-index: 1000;
         }
 
@@ -96,19 +95,28 @@
         #startButton:hover {
             background-color: #e67e22;
         }
+
+        /* Style for Back to Home link */
+        .back-home {
+            color: #f1c40f;
+            font-size: 1.2rem;
+            text-decoration: none;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
     </style>
 </head>
 <body>
 
-    <!-- Link to Home Page at the top -->
+    <!-- Back to Home Link -->
+    <div>
+        <a href="index.html" class="back-home">Back to Home</a>
+    </div>
+
     <div class="container">
         <h1 class="header">Space!</h1>
         <p>Click anywhere on the page to embark on an interactive journey through space exploration.</p>
-
-        <!-- Back to Home Link -->
-        <div>
-            <a href="index.html" style="color: #f1c40f; font-size: 1.2rem; text-decoration: none;">Back to Home</a>
-        </div>
 
         <!-- Clickable container to trigger the game content -->
         <div id="triggerArea" style="height: 100vh; cursor: pointer;"></div>
