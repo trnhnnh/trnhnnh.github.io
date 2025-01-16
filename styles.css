@@ -16,7 +16,7 @@ body {
     background-image: url('stars.gif'); /* Reference the stars.gif */
     background-size: cover; /* Ensure the GIF covers the entire page */
     background-position: center center; /* Center the GIF */
-    background-repeat: no-repeat; /* Don't repeat the GIF */
+    background-repeat: repeat; /* Don't repeat the GIF */
     background-attachment: fixed; /* Keep the GIF fixed while scrolling */
 }
 
