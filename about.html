@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About</title>    
+    <title>About</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet"> <!-- VT323 font link -->
     <style>
@@ -192,12 +192,12 @@
 
     // General function for handling user decision
     function makeDecision(validChoices, callback) {
-        const userChoice = prompt(Please enter one of the following choices: ${validChoices.join(' / ')}).toLowerCase();
+        const userChoice = prompt(`Please enter one of the following choices: ${validChoices.join(' / ')}`).toLowerCase();
         
         if (validChoices.includes(userChoice)) {
             callback(userChoice);
         } else {
-            gameOutput.textContent = Invalid choice. Please enter one of the following: ${validChoices.join(' / ')};
+            gameOutput.textContent = `Invalid choice. Please enter one of the following: ${validChoices.join(' / ')}`;
         }
     }
 
