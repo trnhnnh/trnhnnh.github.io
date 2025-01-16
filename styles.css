@@ -9,7 +9,7 @@ html, body {
 
 /* Background Stars GIF styling */
 body {
-    background-image: url('stars_pop.gif'); /* Reference stars.gif in the same folder */
+    background-image: url('stars_shooting.gif'); /* Reference stars.gif in the same folder */
     background-size: 50% 50%;
     background-position: top left; /* Position the GIF at the top-left corner */
     background-repeat: repeat; /* Make the GIF repeat both horizontally and vertically */
