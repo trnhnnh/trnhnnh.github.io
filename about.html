@@ -158,54 +158,58 @@
             startGame(); // Start the game immediately when section appears
         });
 
-        // Start the game
+        // Start the game based on gameState
         function startGame() {
             if (gameState === 0) {
                 gameState = 1;
                 gameOutput.textContent = 'You are on your spaceship, headed to a new planet. Your mission: colonize and make Earth’s problems a thing of the past. Do you want to proceed with colonizing or reconsider? (colonize/reconsider)';
                 startButton.textContent = 'Make a Decision';
-            } else if (gameState === 1) {
-                const userChoice = prompt('Do you want to colonize the new planet or reconsider? (colonize/reconsider)').toLowerCase();
-                if (userChoice === 'colonize') {
-                    gameOutput.textContent = 'You proceed with colonizing the planet. But the new ecosystem begins to fail, and Earth’s resources continue to dwindle.';
-                    gameState = 2;
-                } else {
-                    gameOutput.textContent = 'You decide to reconsider. You look back at Earth, realizing it needs more focus before we abandon it for the unknown.';
-                    gameState = 10;
-                }
-                startButton.textContent = 'Continue';
+                startButton.onclick = function() {
+                    const userChoice = prompt('Do you want to colonize the new planet or reconsider? (colonize/reconsider)').toLowerCase();
+                    if (userChoice === 'colonize') {
+                        gameOutput.textContent = 'You proceed with colonizing the planet. But the new ecosystem begins to fail, and Earth’s resources continue to dwindle.';
+                        gameState = 2;
+                    } else {
+                        gameOutput.textContent = 'You decide to reconsider. You look back at Earth, realizing it needs more focus before we abandon it for the unknown.';
+                        gameState = 10; // A different branch where Earth focus is prioritized
+                    }
+                    startButton.textContent = 'Continue';
+                };
             } else if (gameState === 2) {
                 gameOutput.textContent = 'The colonization mission is failing. The planet is not suited for human life. Meanwhile, back on Earth, pollution and climate change worsen. Do you try to return to Earth to fix things, or continue colonizing? (return/colonize)';
                 startButton.textContent = 'Make a Decision';
-                const userChoice = prompt('Do you return to Earth to help fix its issues, or continue colonizing? (return/colonize)').toLowerCase();
-                if (userChoice === 'return') {
-                    gameOutput.textContent = 'You decide to return to Earth, realizing that fixing Earth is the key to the future. The mission ends, but hope is restored.';
-                    gameState = 10;
-                } else {
-                    gameOutput.textContent = 'You press on with colonization, but your supplies are running low.';
-                    gameState = 3;
-                }
-                startButton.textContent = 'Continue';
+                startButton.onclick = function() {
+                    const userChoice = prompt('Do you return to Earth to help fix its issues, or continue colonizing? (return/colonize)').toLowerCase();
+                    if (userChoice === 'return') {
+                        gameOutput.textContent = 'You decide to return to Earth, realizing that fixing Earth is the key to the future. The mission ends, but hope is restored.';
+                        gameState = 10;
+                    } else {
+                        gameOutput.textContent = 'You press on with colonization, but your supplies are running low.';
+                        gameState = 3;
+                    }
+                    startButton.textContent = 'Continue';
+                };
             } else if (gameState === 3) {
-                gameOutput.textContent = 'The colonization mission is in jeopardy. Because of the lack of supplies, all of the billionaires on board the spaceship have decided to cannibalize everyone on board, including you. Meanwhile the new planet's atmosphere is unbreathable, the new ecosystem is collapsing, and the resources you expected to sustain the colony are non-existent. Meanwhile, Earth’s environment continues to deteriorate—rising sea levels, rampant wildfires, and increasing temperatures. You face an agonizing decision: Do you return to Earth to help fix it, or do you continue the dangerous colonization effort, hoping things might improve? (return/colonize)';
+                gameOutput.textContent = 'The colonization mission is in jeopardy. Because of the lack of supplies, all of the billionaires on board the spaceship have decided to cannibalize everyone on board, including you. Meanwhile, the new planet\'s atmosphere is unbreathable, the new ecosystem is collapsing, and the resources you expected to sustain the colony are non-existent. Meanwhile, Earth’s environment continues to deteriorate—rising sea levels, rampant wildfires, and increasing temperatures. You face an agonizing decision: Do you return to Earth to help fix it, or do you continue the dangerous colonization effort, hoping things might improve? (return/colonize)';
                 startButton.textContent = 'Make a Decision';
-                const userChoice = prompt('Do you return to Earth to help fix its issues, or continue colonizing? (return/colonize)').toLowerCase();
-                if (userChoice === 'return') {
-                    gameOutput.textContent = 'After much sacrifice and innovation, humanity works together to halt the damage. Renewable energy becomes the standard. Pollution levels decrease. Global temperatures stabilize. This doesn't solve all the problems, but it’s a start. Earth begins to heal slowly.';
-                    gameState = 10;
-                } else {
-                    gameOutput.textContent = 'Despite your best efforts, you weren't able to colonize space. Political interests and corporate greed make reversing the damage nearly impossible. Both the Earth and this new planet continue to degrade, and the last remnants of human civilization face collapse.';
-                    gameState = 4;
-                }
-                startButton.textContent = 'Continue';
-            } else if (gameState === 10) {
+                startButton.onclick = function() {
+                    const userChoice = prompt('Do you return to Earth to help fix its issues, or continue colonizing? (return/colonize)').toLowerCase();
+                    if (userChoice === 'return') {
+                        gameOutput.textContent = 'After much sacrifice and innovation, humanity works together to halt the damage. Renewable energy becomes the standard. Pollution levels decrease. Global temperatures stabilize. This doesn\'t solve all the problems, but it’s a start. Earth begins to heal slowly.';
+                        gameState = 10;
+                    } else {
+                        gameOutput.textContent = 'Despite your best efforts, you weren\'t able to colonize space. Political interests and corporate greed make reversing the damage nearly impossible. Both the Earth and this new planet continue to degrade, and the last remnants of human civilization face collapse.';
+                        gameState = 4;
+                    }
+                    startButton.textContent = 'Continue';
+                };
+            } else if (gameState === 10 || gameState === 4) {
                 gameOutput.textContent = 'Congratulations! You’ve made it through a small part of the journey. Do you want to start again and focus on Earth, or keep pushing for colonization?';
                 startButton.textContent = 'Start Again';
                 gameState = 0;
-            } else if (gameState === 4) {
-                gameOutput.textContent = 'You've narrowly escaped the cannibal billionaires. Humanity's future seems bleak. You and your crew are left to wander the stars, unsure of where to go. Do you want to start again and focus on Earth, or keep pushing for colonization?';
-                startButton.textContent = 'Start Again';
-                gameState = 0;
+                startButton.onclick = function() {
+                    startGame(); // Restart the game
+                };
             }
         }
 
@@ -213,9 +217,6 @@
         closeAboutBtn.addEventListener('click', function() {
             aboutSection.style.display = 'none'; // Hide the about section
         });
-
-        // Start the game when the button is clicked
-        startButton.addEventListener('click', startGame);
     </script>
 
 </body>
