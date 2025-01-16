@@ -5,6 +5,7 @@ html, body {
     font-family: 'Helvetica', sans-serif;
     background-color: black; /* Set background color to black */
     color: white;
+    cursor: url('shootngstar.png') 36 268, auto; /* Add custom PNG cursor */
 }
 
 /* Background Stars GIF styling */
@@ -13,7 +14,7 @@ body {
     background-size: 37% 50%;
     background-position: top left; /* Position the GIF at the top-left corner */
     background-repeat: repeat; /* Make the GIF repeat both horizontally and vertically */
-    /* background-attachment: fixed; /* Keep the GIF fixed while scrolling */
+    background-attachment: fixed; /* Keep the GIF fixed while scrolling */
 }
 
 /* Container to hold all content */
