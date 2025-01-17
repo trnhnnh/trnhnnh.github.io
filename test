@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Spaghettification</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #111;
+        }
+        #image-container {
+            position: relative;
+            overflow: hidden;
+        }
+        img {
+            position: absolute;
+            transition: transform 0.2s ease;
+        }
+        canvas {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="image-container">
+        <img src="spaghetti.png" alt="Spaghettification Image" id="image">
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    <script>
+        let img;
+        let canvas;
+        let distFactor = 0;  // Control the degree of warping (spaghettification)
+
+        function setup() {
+            canvas = createCanvas(windowWidth, windowHeight);
+            img = loadImage('path_to_your_image.png');
+            noLoop();
+        }
+
+        function draw() {
+            background(0);
+            imageMode(CENTER);
+            translate(width / 2, height / 2);
+            
+            // Apply warping (this can be as complex as you want)
+            for (let y = -img.height / 2; y < img.height / 2; y++) {
+                for (let x = -img.width / 2; x < img.width / 2; x++) {
+                    let newX = x + distFactor * sin(y / 50);
+                    let newY = y + distFactor * cos(x / 50);
+                    
+                    // Re-map the pixel to new coordinates based on warp effect
+                    let c = img.get(x + img.width / 2, y + img.height / 2);
+                    set(x + width / 2 + newX, y + height / 2 + newY, c);
+                }
+            }
+            updatePixels();
+        }
+
+        // Adjust warp effect with mouse interaction
+        function mouseMoved() {
+            distFactor = map(mouseX, 0, width, -50, 50);
+            redraw();
+        }
+    </script>
+</body>
+</html>
