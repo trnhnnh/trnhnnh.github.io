@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Image Spaghettification</title>
+    <title>Interactive Image Spaghettification</title>
     <style>
         body {
             display: flex;
@@ -13,59 +13,66 @@
             margin: 0;
             background-color: #111;
         }
-        #image-container {
-            position: relative;
-            overflow: hidden;
-        }
-        img {
-            position: absolute;
-            transition: transform 0.2s ease;
-        }
         canvas {
-            display: none;
+            display: block;  /* Make canvas a block-level element */
         }
     </style>
+    <!-- Include p5.js library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
 </head>
 <body>
-    <div id="image-container">
-        <img src="spaghetti.png" alt="Spaghettification Image" id="image">
-    </div>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
     <script>
         let img;
-        let canvas;
         let distFactor = 0;  // Control the degree of warping (spaghettification)
+        let imgLoaded = false;
 
+        // p5.js setup function (called once)
         function setup() {
-            canvas = createCanvas(windowWidth, windowHeight);
-            img = loadImage('spaghetti.png');
-            noLoop();
+            createCanvas(windowWidth, windowHeight);  // Create a full-screen canvas
+            img = loadImage('https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg', 
+                            () => {
+                                console.log("Image loaded successfully!");
+                                imgLoaded = true;
+                            }, 
+                            (err) => {
+                                console.error("Failed to load image", err);
+                            });
+            noLoop();  // Stops the draw loop after initial rendering
         }
 
+        // p5.js draw function (called repeatedly)
         function draw() {
-            background(0);
+            background(0);  // Set background to black
+
+            if (!imgLoaded) {
+                // If image is not loaded yet, show a loading message
+                fill(255);
+                textSize(32);
+                textAlign(CENTER, CENTER);
+                text("Loading image...", width / 2, height / 2);
+                return;
+            }
+
+            // Once image is loaded, proceed with drawing
             imageMode(CENTER);
             translate(width / 2, height / 2);
-            
-            // Apply warping (this can be as complex as you want)
+
+            // Apply warping effect based on distFactor
             for (let y = -img.height / 2; y < img.height / 2; y++) {
                 for (let x = -img.width / 2; x < img.width / 2; x++) {
                     let newX = x + distFactor * sin(y / 50);
                     let newY = y + distFactor * cos(x / 50);
-                    
-                    // Re-map the pixel to new coordinates based on warp effect
-                    let c = img.get(x + img.width / 2, y + img.height / 2);
-                    set(x + width / 2 + newX, y + height / 2 + newY, c);
+                    let c = img.get(x + img.width / 2, y + img.height / 2);  // Get pixel color
+                    set(x + width / 2 + newX, y + height / 2 + newY, c);  // Apply warped pixel
                 }
             }
             updatePixels();
         }
 
-        // Adjust warp effect with mouse interaction
+        // Mouse movement interaction to change warp intensity
         function mouseMoved() {
-            distFactor = map(mouseX, 0, width, -50, 50);
-            redraw();
+            distFactor = map(mouseX, 0, width, -50, 50);  // Adjust warp intensity based on mouse X position
+            redraw();  // Redraw with new warp factor
         }
     </script>
 </body>
