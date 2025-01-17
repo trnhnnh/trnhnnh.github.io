@@ -3,76 +3,96 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interactive Image Spaghettification</title>
+    <title>Interactive Image Bulge Effect</title>
     <style>
         body {
+            margin: 0;
+            overflow: hidden;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            margin: 0;
             background-color: #111;
         }
         canvas {
-            display: block;  /* Make canvas a block-level element */
+            display: block;
         }
     </style>
-    <!-- Include p5.js library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
 </head>
 <body>
     <script>
         let img;
-        let distFactor = 0;  // Control the degree of warping (spaghettification)
-        let imgLoaded = false;
+        let shaderProgram;
 
-        // p5.js setup function (called once)
+        // Vertex Shader (bulge effect)
+        const vertexShader = `
+            attribute vec3 aPosition;
+            attribute vec2 aTexCoord;
+            uniform mat4 uModelViewProjection;
+            uniform vec2 uMousePos;
+            uniform float uStrength;
+            varying vec2 vTexCoord;
+
+            void main() {
+                vec2 normalizedMouse = uMousePos * 2.0 - 1.0;
+                vec2 dist = aTexCoord - normalizedMouse;
+                float distSq = dot(dist, dist);
+                float displacement = exp(-distSq * 10.0) * uStrength;
+
+                vec3 displacedPosition = aPosition.xyz + vec3(dist * displacement, 0.0);
+                gl_Position = uModelViewProjection * vec4(displacedPosition, 1.0);
+                vTexCoord = aTexCoord;
+            }
+        `;
+
+        // Fragment Shader
+        const fragmentShader = `
+            precision mediump float;
+            varying vec2 vTexCoord;
+            uniform sampler2D tex;
+
+            void main() {
+                gl_FragColor = texture2D(tex, vTexCoord);
+            }
+        `;
+
+        // p5.js setup function
         function setup() {
-            createCanvas(windowWidth, windowHeight);  // Create a full-screen canvas
-            img = loadImage('https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg', 
-                            () => {
-                                console.log("Image loaded successfully!");
-                                imgLoaded = true;
-                            }, 
-                            (err) => {
-                                console.error("Failed to load image", err);
-                            });
-            noLoop();  // Stops the draw loop after initial rendering
+            createCanvas(windowWidth, windowHeight, WEBGL);
+            img = loadImage('spaghetti.png', () => {
+                shaderProgram = createShader(vertexShader, fragmentShader);
+                shader(shaderProgram);
+            });
         }
 
-        // p5.js draw function (called repeatedly)
+        // p5.js draw function (called continuously)
         function draw() {
-            background(0);  // Set background to black
+            background(0);
+            if (img && shaderProgram) {
+                shader(shaderProgram);
+                shaderProgram.setUniform('tex', img);
+                
+                // Normalize mouse position for the shader
+                let mousePos = createVector(mouseX / width, mouseY / height);
+                shaderProgram.setUniform('uMousePos', mousePos);
+                
+                // Set strength of the bulge (adjust based on mouse distance or static value)
+                shaderProgram.setUniform('uStrength', 0.2);  // You can adjust this value to control the effect intensity
 
-            if (!imgLoaded) {
-                // If image is not loaded yet, show a loading message
-                fill(255);
-                textSize(32);
-                textAlign(CENTER, CENTER);
-                text("Loading image...", width / 2, height / 2);
-                return;
+                // Draw the quad (this is the object that the shader applies to)
+                beginShape();
+                texture(img);
+                vertex(-width / 2, -height / 2, 0, 0);
+                vertex(width / 2, -height / 2, 1, 0);
+                vertex(width / 2, height / 2, 1, 1);
+                vertex(-width / 2, height / 2, 0, 1);
+                endShape(CLOSE);
             }
-
-            // Once image is loaded, proceed with drawing
-            imageMode(CENTER);
-            translate(width / 2, height / 2);
-
-            // Apply warping effect based on distFactor
-            for (let y = -img.height / 2; y < img.height / 2; y++) {
-                for (let x = -img.width / 2; x < img.width / 2; x++) {
-                    let newX = x + distFactor * sin(y / 50);
-                    let newY = y + distFactor * cos(x / 50);
-                    let c = img.get(x + img.width / 2, y + img.height / 2);  // Get pixel color
-                    set(x + width / 2 + newX, y + height / 2 + newY, c);  // Apply warped pixel
-                }
-            }
-            updatePixels();
         }
 
-        // Mouse movement interaction to change warp intensity
-        function mouseMoved() {
-            distFactor = map(mouseX, 0, width, -50, 50);  // Adjust warp intensity based on mouse X position
-            redraw();  // Redraw with new warp factor
+        // Adjust canvas size on window resize
+        function windowResized() {
+            resizeCanvas(windowWidth, windowHeight);
         }
     </script>
 </body>
