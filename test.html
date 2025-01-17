@@ -59,10 +59,35 @@
         // p5.js setup function
         function setup() {
             createCanvas(windowWidth, windowHeight, WEBGL);
-            img = loadImage('spaghetti.png', () => {
+
+            // Load image and shaders
+            img = loadImage('https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg', () => {
+                console.log("Image loaded successfully");
                 shaderProgram = createShader(vertexShader, fragmentShader);
+                // Check shader compilation status
+                checkShaderCompilation(shaderProgram);
                 shader(shaderProgram);
+            }, (error) => {
+                console.error("Failed to load image:", error);
             });
+        }
+
+        // Check shader compilation status
+        function checkShaderCompilation(shader) {
+            let vertexShaderCompiled = gl.getShaderParameter(shader._vert, gl.COMPILE_STATUS);
+            let fragmentShaderCompiled = gl.getShaderParameter(shader._frag, gl.COMPILE_STATUS);
+
+            if (!vertexShaderCompiled) {
+                console.error('Vertex shader compilation failed: ', gl.getShaderInfoLog(shader._vert));
+            } else {
+                console.log('Vertex shader compiled successfully');
+            }
+
+            if (!fragmentShaderCompiled) {
+                console.error('Fragment shader compilation failed: ', gl.getShaderInfoLog(shader._frag));
+            } else {
+                console.log('Fragment shader compiled successfully');
+            }
         }
 
         // p5.js draw function (called continuously)
