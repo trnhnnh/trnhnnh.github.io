@@ -12,8 +12,18 @@
     <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
 
     <!-- Link to your styles.css -->
-    <link rel="stylesheet" href="styles.css">
     <style>
+
+        /* Style for space link */
+        .space {
+            color: #f1c40f;
+            font-size: 1.3rem;
+            text-decoration: none;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+        
         /* Bio Section */
         .bio-section {
             text-align: center;
@@ -34,16 +44,33 @@
             line-height: 0.7;
             text-transform: lowercase; /* Make all text lowercase */
         }
+
+        /* credit Section */
+        .credit-section {
+            text-align: center;
+            padding: 5px;
+            margin-top: 40px; /* Move it closer to the top of the page */
+            /* background-color: black; */
+            color: #f1c40f;
+            font-size: 0.9rem; /* Smaller font size for bio */
+        }
+
+        .credit-section h2 {
+            font-size: 1.5rem; /* Slightly smaller heading */
+            margin-bottom: 10px;
+        }
+
+        .credit-section p {
+            font-size: 1.2rem;
+            line-height: 0.7;
+            text-transform: lowercase; /* Make all text lowercase */
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1 class="header">hello. this site is under construction. please appreciate my cat spaghetti for now </h1>
-    </div>
-
     <!-- Go to space Page Link -->
     <div>
-        <a href="space.html" class="back-home">space</a>
+        <a href="space.html" class="space">space</a>
     </div>
  
     <!-- Bio Section -->
@@ -52,6 +79,12 @@
         <p>hannah tran is a designer for performance and media with a passion for new works and movement, based in brooklyn.</p>
         <p>she holds a masters of fine arts in design from the yale school of drama.</p>
         <p>proud member of local usa 829.</p>
+    </div>
+
+    <!-- Credit Section -->
+    <div class="credit-section">
+        <h2>projection design</h2>
+        <p></p>
     </div>
     
     <!-- Footer Section -->
