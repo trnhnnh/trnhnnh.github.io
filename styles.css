@@ -75,6 +75,14 @@ footer.footer {
     top: 20px;
     left: 20px;
 }
+.space {
+    color: #f1c40f;
+    font-size: 1.3rem;
+    text-decoration: none;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
 
 /* Hover effect for Back to About link */
 .back-home:hover {
