@@ -29,7 +29,7 @@ body {
 /* Header Styling */
 .header {
     background-color: black;
-    font-size: 18px;
+    font-size: 1.125rem; /* Slightly larger font size using rem */
     font-weight: 150;
     text-align: center;
     color: white;
@@ -55,7 +55,7 @@ body {
 /* Footer Styling */
 footer.footer {
     background-color: black; /* Black background for the footer */
-    font-size: 16px;
+    font-size: 1rem; /* Use rem for scalability */
     font-weight: 150;
     text-align: center;
     color: white; /* White text color */
@@ -90,4 +90,63 @@ footer.footer {
 }
 .space:hover {
     color: #e67e22; /* Change to a darker yellow on hover */
+}
+
+/* Media Queries for Mobile Responsiveness */
+
+/* Mobile devices (portrait and landscape) */
+@media screen and (max-width: 768px) {
+    /* Adjust padding for smaller screens */
+    .container {
+        padding: 20px;
+    }
+
+    /* Make header text slightly smaller */
+    .header {
+        font-size: 1rem;
+    }
+
+    /* Image resizing for smaller screens */
+    .image {
+        width: 90%; /* Make image width responsive */
+        max-width: 350px; /* Limit max size */
+    }
+
+    /* Adjust footer size */
+    footer.footer {
+        font-size: 0.9rem;
+    }
+
+    /* Adjust space link and back-home link for mobile */
+    .space, .back-home {
+        font-size: 1.1rem;
+        top: 10px;
+        left: 10px;
+    }
+}
+
+/* Small mobile devices (portrait) */
+@media screen and (max-width: 480px) {
+    /* Adjust font sizes for readability */
+    .header {
+        font-size: 0.875rem; /* Smaller font for very small screens */
+    }
+
+    /* Further reduce image size on very small screens */
+    .image {
+        width: 100%; /* Make image fill width on small screens */
+        max-width: 300px;
+    }
+
+    /* Footer font size reduction for small screens */
+    footer.footer {
+        font-size: 0.8rem;
+    }
+
+    /* Adjust space link and back-home links */
+    .space, .back-home {
+        font-size: 1rem;
+        top: 5px;
+        left: 5px;
+    }
 }
