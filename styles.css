@@ -62,7 +62,7 @@ footer.footer {
     padding: 10px 0; /* Padding around the text */
     position: relative;
     bottom: 0;
-    width: 30%; /* Full width */
+    width: 100%; /* Full width */
     margin-top: auto; /* Push footer to bottom */
 }
 
