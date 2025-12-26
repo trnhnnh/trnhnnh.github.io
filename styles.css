@@ -1,152 +1,130 @@
-/* General Reset */
+/* ===== GLOBAL ===== */
 html, body {
-    height: 100%; /* Ensure full height of the viewport */
-    margin: 0; /* Remove default margin */
-    font-family: 'VT323', monospace; /* Apply VT323 font globally */
-    background-color: black; /* Set background color to black */
-    color: white; /* Set text color to white */
-    cursor: none; /* Hide default cursor */
-}
-
-/* Background Stars GIF styling */
-body {
-    background-image: url('stars_loop.gif'); /* Reference stars.gif in the same folder */
-    background-size: 30% 50%;
-    background-position: top left; /* Position the GIF at the top-left corner */
-    background-repeat: repeat; /* Make the GIF repeat both horizontally and vertically */
-    background-attachment: fixed; /* Keep the GIF fixed while scrolling */
-    cursor: url('shootingstar.png') 13 111, auto; /* Add custom PNG cursor */
-}
-
-/* Container to hold all content */
-.container {
-    text-align: center;
-    width: 100%; /* Full width */
-    height: auto; /* Remove full-height constraint */
-    padding: 30px; /* Add some padding */
-}
-
-/* Header Styling */
-.header {
+    margin: 0;
+    height: 100%;
+    font-family: 'VT323', monospace;
     background-color: black;
-    font-size: 1.125rem; /* Slightly larger font size using rem */
-    font-weight: 150;
-    text-align: center;
     color: white;
-    margin-bottom: 20px;
-    line-height: 1.5;
-    white-space: normal;
-    position: relative;
 }
 
-/* Image Styling */
-.image-container {
-    margin-top: 30px; /* Space between text and image */
+body {
+    background-image: url('stars_loop.gif');
+    background-size: 30% 50%;
+    background-repeat: repeat;
+    background-attachment: fixed;
 }
 
-.image {
-    width: 80%; /* Adjust image width to fit your needs */
-    max-width: 400px;
-    height: auto;
-    display: block;
-    margin: 0 auto;
-}
-
-/* Footer Styling */
-footer.footer {
-    background-color: black; /* Black background for the footer */
-    font-size: 1rem; /* Use rem for scalability */
-    font-weight: 150;
-    text-align: center;
-    color: white; /* White text color */
-    padding: 10px 0; /* Padding around the text */
-    position: relative;
-    bottom: 0;
-    width: 100%; /* Full width */
-    margin-top: auto; /* Push footer to bottom */
-}
-
-/* Style for Back to About link */
-.back-home {
-    color: #f1c40f; /* Yellow color */
-    font-size: 1.3rem; /* Font size same as in the About page */
-    text-decoration: none;
-    position: absolute; /* Position it in the top-left corner */
-    top: 20px;
-    left: 20px;
-}
-.space {
-    color: #f1c40f;
-    font-size: 1.3rem;
-    text-decoration: none;
+/* ===== NAV LINKS ===== */
+.space, .back-home {
     position: absolute;
     top: 20px;
     left: 20px;
+    font-size: 1.3rem;
+    color: #f1c40f;
+    text-decoration: none;
 }
 
-/* Hover effect for Back to About link */
-.back-home:hover {
-    color: #e67e22; /* Change to a darker yellow on hover */
-}
-.space:hover {
-    color: #e67e22; /* Change to a darker yellow on hover */
+.space:hover, .back-home:hover {
+    color: #e67e22;
 }
 
-/* Media Queries for Mobile Responsiveness */
+/* ===== FOOTER ===== */
+.footer {
+    text-align: center;
+    padding: 10px 0;
+    font-size: 1rem;
+}
 
-/* Mobile devices (portrait and landscape) */
-@media screen and (max-width: 768px) {
-    /* Adjust padding for smaller screens */
-    .container {
-        padding: 20px;
+/* ===== ABOUT PAGE ===== */
+.bio-section {
+    padding: 100px 300px 200px;
+    color: #f1c40f;
+}
+
+.bio-section p {
+    font-size: 1.5rem;
+    line-height: 1.0;
+    text-transform: lowercase;
+}
+
+.archive-link {
+    margin-top: 180px;
+    font-size: 1.5rem;
+}
+
+.archive-link a {
+    color: #0000ff;
+    text-decoration: none;
+}
+
+/* ===== SPACE PAGE ===== */
+.container {
+    text-align: center;
+    padding: 30px;
+}
+
+.header {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+#triggerArea {
+    height: 50vh;
+    cursor: pointer;
+}
+
+.about-section {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.9);
+    padding: 40px;
+    text-align: center;
+    z-index: 1000;
+}
+
+.about-section h1 {
+    font-size: 2.5rem;
+}
+
+.about-section p {
+    font-size: 1.2rem;
+}
+
+#gameOutput {
+    margin: 20px 0;
+    color: #f1c40f;
+}
+
+button {
+    background: #f1c40f;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin: 5px;
+}
+
+/* ===== MOBILE FIX ===== */
+@media (max-width: 768px) {
+    .bio-section {
+        padding: 80px 20px 120px;
     }
 
-    /* Make header text slightly smaller */
-    .header {
-        font-size: 1rem;
-    }
-
-    /* Image resizing for smaller screens */
-    .image {
-        width: 90%; /* Make image width responsive */
-        max-width: 350px; /* Limit max size */
-    }
-
-    /* Adjust footer size */
-    footer.footer {
-        font-size: 0.9rem;
-    }
-
-    /* Adjust space link and back-home link for mobile */
     .space, .back-home {
-        font-size: 1.1rem;
         top: 10px;
         left: 10px;
+        font-size: 1.1rem;
     }
 }
 
-/* Small mobile devices (portrait) */
-@media screen and (max-width: 480px) {
-    /* Adjust font sizes for readability */
-    .header {
-        font-size: 0.875rem; /* Smaller font for very small screens */
+@media (max-width: 480px) {
+    .bio-section {
+        padding: 70px 14px 100px;
     }
 
-    /* Further reduce image size on very small screens */
-    .image {
-        width: 100%; /* Make image fill width on small screens */
-        max-width: 300px;
-    }
-
-    /* Footer font size reduction for small screens */
-    footer.footer {
-        font-size: 0.8rem;
-    }
-
-    /* Adjust space link and back-home links */
-    .space, .back-home {
-        font-size: 1rem;
-        top: 5px;
-        left: 5px;
+    .bio-section p {
+        font-size: 1.3rem;
+        line-height: 1.1;
     }
 }
